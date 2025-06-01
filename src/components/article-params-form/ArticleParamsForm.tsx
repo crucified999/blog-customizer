@@ -21,7 +21,8 @@ import clsx from 'clsx';
 import styles from './ArticleParamsForm.module.scss';
 
 type TArticleParamsFormProps = {
-	setGlobalState: (value: ArticleStateType) => void;
+	currentArticleState: (typeof defaultArticleState);
+	setCurrentArticleState: (value: ArticleStateType) => void;
 };
 
 export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
@@ -31,7 +32,8 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 	function handleFormSubmit(e: FormEvent) {
 		e.preventDefault();
 
-		props.setGlobalState({
+		props.setCurrentArticleState({
+			...props.currentArticleState,
 			fontFamilyOption: formState.fontFamilyOption,
 			fontSizeOption: formState.fontSizeOption,
 			fontColor: formState.fontColor,
@@ -45,7 +47,7 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 
 		setFormState(defaultArticleState);
 
-		props.setGlobalState(defaultArticleState);
+		props.setCurrentArticleState(defaultArticleState);
 	}
 
 	function handleOptionChange(fieldName: string) {

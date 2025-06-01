@@ -22,7 +22,8 @@ export const App = () => {
 					'--bg-color': currentArticleState.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm setGlobalState={setCurrentArticleState} />
+			<ArticleParamsForm 	currentArticleState={currentArticleState}
+								setCurrentArticleState={setCurrentArticleState} />
 			<Article />
 		</main>
 	);
