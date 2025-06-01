@@ -1,40 +1,12 @@
-import React from 'react';
+import { App } from './components/app/App';
 
 import { createRoot } from 'react-dom/client';
-import { StrictMode, CSSProperties } from 'react';
-import clsx from 'clsx';
-
-import { Article } from './components/article/Article';
-import { ArticleParamsForm } from './components/article-params-form/ArticleParamsForm';
-import { defaultArticleState } from './constants/articleProps';
+import { StrictMode } from 'react';
 
 import './styles/index.scss';
-import styles from './styles/index.module.scss';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
-
-const App = () => {
-
-	const [appState, setAppState] = React.useState(defaultArticleState);
-
-	return (
-		<main
-			className={clsx(styles.main)}
-			style={
-				{
-					'--font-family': appState.fontFamilyOption.value,
-					'--font-size': appState.fontSizeOption.value,
-					'--font-color': appState.fontColor.value,
-					'--container-width': appState.contentWidth.value,
-					'--bg-color': appState.backgroundColor.value,
-				} as CSSProperties
-			}>
-			<ArticleParamsForm setGlobalState={setAppState}/>
-			<Article />
-		</main>
-	);
-};
 
 root.render(
 	<StrictMode>
